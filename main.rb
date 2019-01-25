@@ -1,5 +1,6 @@
 require_relative 'Captcha.rb'
 require_relative 'account.rb'
+require_relative 'transactions.rb'
 
 correct_answer = Captcha.new.getCaptcha
 answer = gets
@@ -10,3 +11,4 @@ else
   return
 end
 AccountClass.new.getAccountInfo
+TransactionsClass.new.getTransactionsInfo
