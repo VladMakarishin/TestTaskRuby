@@ -1,16 +1,24 @@
 require_relative 'Captcha.rb'
+require 'open-uri'
+require 'nokogiri'
+require 'json'
 
-def fun_captcha
-a = Captcha.new.getCaptcha
-puts a[1]
-return a[0]
-end
-
-correct_answer = fun_captcha()
+correct_answer = Captcha.new.getCaptcha
 answer = gets
 
 if answer.to_i == correct_answer
-puts "Success"
+
 else
   return
+end
+
+showings = []
+url = 'https://link.alfabank.ru/webclient/pages/static/iFrames/demo/extract.html'
+html = open(url)
+doc = Nokogiri::HTML(html)
+doc.css(".odd").each do |showing|
+  puts "name: #{showing.css('.td5').inner_html}"
+  puts "account: #{showing.css('.td1').inner_html}"
+  puts "currency: #{showing.css('.td2').inner_html}"
+  puts "balance: #{showing.css('.td4').inner_html}"
 end

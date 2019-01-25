@@ -25,8 +25,8 @@ class Captcha
     op = @operations.keys[rand(3)]
 
     val = eval "#{randNum1}#{op}#{randNum2}"
-    captcha_text = "#{@numbers_liter[randNum1]} #{@operations[op]} #{@numbers_liter[randNum2]}"
+    puts captcha_text = "#{@numbers_liter[randNum1]} #{@operations[op]} #{@numbers_liter[randNum2]}"
 
-    return val,captcha_text
+    return val
   end
 end
