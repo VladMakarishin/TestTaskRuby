@@ -14,18 +14,18 @@ doc.css(".#{tag}").each do |showing|
   description= showing.css('.td1').inner_html
   amount = showing.css('.td7').inner_html
 array.push(
-    date: date,
-    account: account,
-    description: description,
-    amount: amount
+    "date" => date,
+    "account" => account,
+    "description" => description,
+    "amount" => amount
   )
     end
   end
-  def getTransactionsInfo
+  def getInfo
 showings = []
 TransactionsInfo('odd',showings)
 TransactionsInfo('even',showings)
-puts JSON.pretty_generate(showings)
+return showings
   end
 private:TransactionsInfo
 end

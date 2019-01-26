@@ -14,18 +14,18 @@ doc.css(".#{tag}").each do |showing|
   currency = showing.css('.td2').inner_html
   balance= showing.css('.td4').inner_html
 array.push(
-    name: name,
-    account: account,
-    currency: currency,
-    balance: balance
+    "name" => name,
+    "account" => account,
+    "currency" => currency,
+    "balance" => balance,
   )
     end
   end
-  def getAccountInfo
+  def getInfo
 showings = []
 AccountInfo('odd',showings)
 AccountInfo('even',showings)
-puts JSON.pretty_generate(showings)
+return showings
   end
 private:AccountInfo
 end

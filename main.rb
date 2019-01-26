@@ -1,6 +1,7 @@
 require_relative 'Captcha.rb'
 require_relative 'account.rb'
 require_relative 'transactions.rb'
+require_relative 'accountsWithTransactions.rb'
 
 correct_answer = Captcha.new.getCaptcha
 answer = gets
@@ -10,5 +11,27 @@ puts "Success"
 else
   return
 end
-AccountClass.new.getAccountInfo
-TransactionsClass.new.getTransactionsInfo
+puts "For accounts info, press: 1"
+puts "For transactions info, press: 2"
+puts "For all information, press: 3"
+
+def showWithJson(arr)
+  puts JSON.pretty_generate(arr)
+end
+
+answer = nil
+answer = gets
+
+case answer.to_i
+when 1
+  puts "Accounts: \n"
+showWithJson(AccountClass.new.getInfo)
+when 2
+  puts "Transactions: \n"
+showWithJson(TransactionsClass.new.getInfo)
+when 3
+  puts "AccountsWithTransactions: \n"
+showWithJson(AccountsWithTransactions.new.getInfo)
+else
+  return
+end
