@@ -18,15 +18,14 @@ class Captcha
       "*" => "multiplies",
     }
   end
-  def getCaptcha
 
+  def getCaptcha
     randNum1=@numbers[rand(9)]
     randNum2=@numbers[rand(9)]
     op = @operations.keys[rand(3)]
 
     val = eval "#{randNum1}#{op}#{randNum2}"
     puts captcha_text = "#{@numbers_liter[randNum1]} #{@operations[op]} #{@numbers_liter[randNum2]}"
-
     return val
   end
 end
